@@ -20,8 +20,8 @@ public class TeamsDisplay {
     }
 
     private void setActionListeners() {
-
-    }
+        gameComboBox.addActionListener(e -> showTeams());
+        }
 
     private void fillComboBox(){
         ArrayList<String> games =  Database.GetGames();
