@@ -21,21 +21,33 @@ public class TeamsDisplay {
     private void setActionListeners() {
 
     }
-    private void fillComboBox(){
 
+    private void fillComboBox(){
+        ArrayList<String> games =  Database.GetGames();
+
+        DefaultComboBoxModel<String> demoList = new DefaultComboBoxModel<>();
+
+        for (String game: games
+        ) {
+            demoList.addElement(game);
+        }
+        gameComboBox.setModel(demoList);
+
+        System.out.println("games demoList: " + demoList);
     }
+
     private void showTeams(){
         ArrayList<String> teams =  Database.GetTeams();
 
-        DefaultListModel<String> demoList = new DefaultListModel();
+        DefaultListModel<String> demoList = new DefaultListModel<>();
 
         for (String team: teams
-             ) {
+        ) {
             demoList.addElement(team);
         }
         //teamsList = new JList(demoList);
         teamsList.setModel(demoList);
 
-        System.out.println("demoList: " + demoList);
+        System.out.println("teams demoList: " + demoList);
     }
 }
