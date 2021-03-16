@@ -16,6 +16,7 @@ public class TeamsDisplay {
         jframe.setVisible(true);
         setActionListeners();
         showTeams();
+        fillComboBox();
     }
 
     private void setActionListeners() {
