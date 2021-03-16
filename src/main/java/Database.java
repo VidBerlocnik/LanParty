@@ -20,8 +20,31 @@ public class Database {
         return con;
     }
 
-    public static ArrayList<String> GetTeams() {
-        String cmd = "SELECT * FROM teams";
+    public static int GetGameID(String gameName){
+        int vrni = 0;
+        String cmd = "SELECT id FROM games WHERE(name = '" + gameName + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                vrni = set.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return vrni;
+    }
+
+
+    public static ArrayList<String> GetTeams(String gameName) {
+        String cmd = "SELECT * FROM teams t INNER JOIN games g ON t.game_id = g.id " +
+                "WHERE(t.game_id = "+ GetGameID(gameName) + ")";
         ArrayList<String> teams = new ArrayList<>();
 
         try (Connection con = connect();

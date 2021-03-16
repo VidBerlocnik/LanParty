@@ -15,8 +15,8 @@ public class TeamsDisplay {
         jframe.setSize(600,400); // change these
         jframe.setVisible(true);
         setActionListeners();
-        showTeams();
         fillComboBox();
+        showTeams();
     }
 
     private void setActionListeners() {
@@ -38,7 +38,9 @@ public class TeamsDisplay {
     }
 
     private void showTeams(){
-        ArrayList<String> teams =  Database.GetTeams();
+        String gameName = gameComboBox.getSelectedItem().toString();
+
+        ArrayList<String> teams =  Database.GetTeams(gameName);
 
         DefaultListModel<String> demoList = new DefaultListModel<>();
 
