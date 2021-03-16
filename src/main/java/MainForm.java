@@ -13,7 +13,6 @@ public class MainForm {
         jframe.pack();
         jframe.setSize(600,400); // change these
         jframe.setVisible(true);
-        TeamsDisplay teamsDisplay = new TeamsDisplay();
         setActionListeners();
     }
 
