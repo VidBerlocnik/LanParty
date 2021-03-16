@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.sql.Connection;
 
 public class MainForm {
@@ -12,10 +13,12 @@ public class MainForm {
         jframe.pack();
         jframe.setSize(600,400); // change these
         jframe.setVisible(true);
+        TeamsDisplay teamsDisplay = new TeamsDisplay();
         setActionListeners();
     }
 
     private void setActionListeners() {
-        button1.addActionListener(e -> Database.connect());
+        button1.addActionListener(e ->
+            new TeamsDisplay());
     }
 }

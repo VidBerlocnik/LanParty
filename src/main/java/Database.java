@@ -19,4 +19,25 @@ public class Database {
         }
         return con;
     }
+
+    public static ArrayList<String> GetTeams() {
+        String cmd = "SELECT * FROM teams";
+        ArrayList<String> teams = new ArrayList<>();
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                teams.add(set.getString("name"));
+            }
+        }
+            catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return teams;
+    }
 }
