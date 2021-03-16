@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class TeamsDisplay {
     private JPanel panel;
-    private JList teamsList;
-    private JComboBox gameComboBox;
+    private JList<String> teamsList;
+    private JComboBox<String> gameComboBox;
     private JLabel label1;
 
     public TeamsDisplay(){
@@ -27,13 +27,15 @@ public class TeamsDisplay {
     private void showTeams(){
         ArrayList<String> teams =  Database.GetTeams();
 
-        DefaultListModel demoList = new DefaultListModel();
+        DefaultListModel<String> demoList = new DefaultListModel();
 
         for (String team: teams
              ) {
             demoList.addElement(team);
         }
-        teamsList = new JList(demoList);
+        //teamsList = new JList(demoList);
+        teamsList.setModel(demoList);
 
+        System.out.println("demoList: " + demoList);
     }
 }
