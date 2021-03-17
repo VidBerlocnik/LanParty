@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 public class Login {
     private JPanel panel;
@@ -11,6 +12,7 @@ public class Login {
     private JLabel label3;
     private JButton loginButton;
     private JButton registerButton;
+    User user;
 
     public Login(){
         JFrame jframe = new JFrame("LAN Party login");
@@ -24,7 +26,18 @@ public class Login {
     };
 
     private void setActionListeners() {
-        loginButton.addActionListener(e ->
-                new User(usernameTextField.getText(), passwordField1.toString()));
+        loginButton.addActionListener(e -> {
+            char[] password = passwordField1.getPassword();
+            String pass = "";
+            for (char letter: password
+                 ) {
+                pass = pass + letter;
+            }
+
+            user = new User(usernameTextField.getText(), pass);
+            //System.out.println(password);
+            System.out.println(user.Username);
+            System.out.println(user.Password);
+        });
     }
 }
