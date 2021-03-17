@@ -20,6 +20,12 @@ public class Messages {
         return status == JOptionPane.YES_OPTION;
     }
 
+
+    public static void infoBox(String infoMessage, String titleBar) {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+
     /**
      * Displays a "Database connection failed" error message
      *

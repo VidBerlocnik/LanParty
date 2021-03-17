@@ -15,4 +15,11 @@ public class User {
         Username = username;
         Password = password;
     }
+
+    public User(){
+        Username = null;
+        Id = null;
+        TeamId = null;
+        Password = null;
+    }
 }
