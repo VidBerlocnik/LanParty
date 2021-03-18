@@ -84,4 +84,28 @@ public class Database {
 
         return games;
     }
+
+    public static User VerifyLogin(String username, String password){
+        String cmd = "SELECT * FROM users WHERE(username = '" + username + "') AND (password = '" + password + "');";
+        User returnedUser = new User();
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                returnedUser.Id = set.getInt("id");
+                returnedUser.Username = set.getString("username");
+                returnedUser.TeamId = set.getInt("team_id");
+                returnedUser.Password = set.getString("password");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return returnedUser;
+    }
 }
