@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Date;
 
 public class Registration {
     private JPanel panel;
@@ -28,7 +29,29 @@ public class Registration {
 
     private void setActionListeners() {
         registerButton.addActionListener(e -> {
-            Database.Register();
+            String username = usernameTextField.getText();
+
+            char[] password = passwordField1.getPassword();
+            String pass = "";
+            for (char letter: password
+            ) {
+                pass = pass + letter;
+            }
+
+            String dateofbirth = dateOfBirthTextField.getText(); //If user inserts in wrong format it crashes
+
+            String email = emailTextField.getText();
+            Character gender = null;
+
+            if(genderRadioButton1.isSelected()){
+                gender = 'm';
+            }
+            else if(genderRadioButton2.isSelected()){
+                gender = 'f';
+            }
+
+            User user = new User(username, pass, dateofbirth, email, gender);
+            Database.Register(user);
         });
     }
 }

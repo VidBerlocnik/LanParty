@@ -109,7 +109,7 @@ public class Database {
         return returnedUser;
     }
 
-    public static void Register(){
+    public static void Register(User user){
 
     }
 }
