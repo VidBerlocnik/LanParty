@@ -40,9 +40,11 @@ public class Login {
             else{
                 new MainForm();
             }
-            //System.out.println(password);
-            //System.out.println(user.Username);
-            //System.out.println(user.Password);
+        });
+
+        registerButton.addActionListener(e -> {
+            new Registration();
+            //Add close login form
         });
     }
 }
