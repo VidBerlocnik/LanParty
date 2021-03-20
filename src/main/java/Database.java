@@ -110,6 +110,16 @@ public class Database {
     }
 
     public static void Register(User user){
+        String cmd = "INSERT INTO users(username, email, password, birth_date, gender)" +
+                "VALUES ('" + user.Username + "', '" + user.Email + "', '" + user.Password + "', '" + user.DateOfBirth + "', '" + user.Gender + "');";
 
+        try (Connection con = connect();
+             Statement st = con.createStatement()) {
+            ResultSet set = st.executeQuery(cmd);
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
     }
 }
