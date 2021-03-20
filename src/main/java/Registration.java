@@ -13,12 +13,7 @@ public class Registration {
     private JRadioButton genderRadioButton2;
     private JLabel label4;
     private JLabel label5;
-    private JComboBox dayComboBox;
-    private JComboBox yearComboBox;
-    private JComboBox monthComboBox;
-    private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
+    private JTextField dateOfBirthTextField;
 
 
     public Registration(){
@@ -33,7 +28,7 @@ public class Registration {
 
     private void setActionListeners() {
         registerButton.addActionListener(e -> {
-
+            Database.Register();
         });
     }
 }
