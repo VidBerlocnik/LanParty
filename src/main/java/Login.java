@@ -13,9 +13,9 @@ public class Login {
     private JLabel label3;
     private JButton loginButton;
     private JButton registerButton;
+    private JFrame jframe = new JFrame("LAN Party login");
 
     public Login(){
-        JFrame jframe = new JFrame("LAN Party login");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -39,12 +39,13 @@ public class Login {
             }
             else{
                 new TeamsDisplay();
+                jframe.setVisible(false);
             }
         });
 
         registerButton.addActionListener(e -> {
             new Registration();
-            //Add close login form
+            jframe.setVisible(false);
         });
     }
 }

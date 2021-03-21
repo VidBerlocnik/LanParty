@@ -15,10 +15,10 @@ public class Registration {
     private JLabel label4;
     private JLabel label5;
     private JTextField dateOfBirthTextField;
+    private JFrame jframe = new JFrame("LAN Party registration");
 
 
     public Registration(){
-        JFrame jframe = new JFrame("LAN Party registration");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -52,6 +52,8 @@ public class Registration {
 
             User user = new User(username, pass, dateofbirth, email, gender);
             Database.Register(user);
+            new Login();
+            jframe.setVisible(false);
         });
     }
 }
