@@ -6,6 +6,9 @@ public class TeamsDisplay {
     private JList<String> teamsList;
     private JComboBox<String> gameComboBox;
     private JLabel label1;
+    private JList playersList;
+    private JLabel label2;
+    private JLabel label3;
 
     public TeamsDisplay(){
         JFrame jframe = new JFrame("Display teams");
