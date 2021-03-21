@@ -24,7 +24,9 @@ public class TeamsDisplay {
 
     private void setActionListeners() {
         gameComboBox.addActionListener(e -> showTeams());
-        }
+
+        teamsList.addListSelectionListener(e -> showPlayers());
+    }
 
     private void fillComboBox(){
         ArrayList<String> games =  Database.GetGames();
