@@ -6,6 +6,9 @@ public class TeamsDisplay {
     private JList<String> teamsList;
     private JComboBox<String> gameComboBox;
     private JLabel label1;
+    private JList playersList;
+    private JLabel label2;
+    private JLabel label3;
 
     public TeamsDisplay(){
         JFrame jframe = new JFrame("Display teams");
@@ -21,7 +24,9 @@ public class TeamsDisplay {
 
     private void setActionListeners() {
         gameComboBox.addActionListener(e -> showTeams());
-        }
+
+        teamsList.addListSelectionListener(e -> showPlayers());
+    }
 
     private void fillComboBox(){
         ArrayList<String> games =  Database.GetGames();
@@ -52,5 +57,22 @@ public class TeamsDisplay {
         teamsList.setModel(demoList);
 
         System.out.println("teams demoList: " + demoList);
+    }
+
+    private void showPlayers(){
+        String teamName = teamsList.getSelectedValue();
+
+        ArrayList<String> players =  Database.GetPlayers(teamName);
+
+        DefaultListModel<String> demoList = new DefaultListModel<>();
+
+        for (String player: players
+        ) {
+            demoList.addElement(player);
+        }
+        //teamsList = new JList(demoList);
+        playersList.setModel(demoList);
+
+        System.out.println("players demoList: " + demoList);
     }
 }

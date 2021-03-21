@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.util.Date;
 
 public class Registration {
     private JPanel panel;
@@ -13,16 +14,11 @@ public class Registration {
     private JRadioButton genderRadioButton2;
     private JLabel label4;
     private JLabel label5;
-    private JComboBox dayComboBox;
-    private JComboBox yearComboBox;
-    private JComboBox monthComboBox;
-    private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
+    private JTextField dateOfBirthTextField;
+    private JFrame jframe = new JFrame("LAN Party registration");
 
 
     public Registration(){
-        JFrame jframe = new JFrame("LAN Party registration");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -33,7 +29,31 @@ public class Registration {
 
     private void setActionListeners() {
         registerButton.addActionListener(e -> {
+            String username = usernameTextField.getText();
 
+            char[] password = passwordField1.getPassword();
+            String pass = "";
+            for (char letter: password
+            ) {
+                pass = pass + letter;
+            }
+
+            String dateofbirth = dateOfBirthTextField.getText(); //If user inserts in wrong format it crashes
+
+            String email = emailTextField.getText();
+            Character gender = null;
+
+            if(genderRadioButton1.isSelected()){
+                gender = 'm';
+            }
+            else if(genderRadioButton2.isSelected()){
+                gender = 'f';
+            }
+
+            User user = new User(username, pass, dateofbirth, email, gender);
+            Database.Register(user);
+            new Login();
+            jframe.setVisible(false);
         });
     }
 }

@@ -13,9 +13,9 @@ public class Login {
     private JLabel label3;
     private JButton loginButton;
     private JButton registerButton;
+    private JFrame jframe = new JFrame("LAN Party login");
 
     public Login(){
-        JFrame jframe = new JFrame("LAN Party login");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -38,11 +38,14 @@ public class Login {
                 Messages.infoBox("Username and password does not match. If you don't have and account yet please register.", "Login failed");
             }
             else{
-                new MainForm();
+                new TeamsDisplay();
+                jframe.setVisible(false);
             }
-            //System.out.println(password);
-            //System.out.println(user.Username);
-            //System.out.println(user.Password);
+        });
+
+        registerButton.addActionListener(e -> {
+            new Registration();
+            jframe.setVisible(false);
         });
     }
 }
