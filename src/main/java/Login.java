@@ -38,7 +38,7 @@ public class Login {
                 Messages.infoBox("Username and password does not match. If you don't have and account yet please register.", "Login failed");
             }
             else{
-                new MainForm();
+                new TeamsDisplay();
             }
         });
 
