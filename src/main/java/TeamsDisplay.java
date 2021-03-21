@@ -56,4 +56,21 @@ public class TeamsDisplay {
 
         System.out.println("teams demoList: " + demoList);
     }
+
+    private void showPlayers(){
+        String teamName = teamsList.getSelectedValue();
+
+        ArrayList<String> players =  Database.GetPlayers(teamName);
+
+        DefaultListModel<String> demoList = new DefaultListModel<>();
+
+        for (String player: players
+        ) {
+            demoList.addElement(player);
+        }
+        //teamsList = new JList(demoList);
+        playersList.setModel(demoList);
+
+        System.out.println("players demoList: " + demoList);
+    }
 }

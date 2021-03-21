@@ -122,4 +122,10 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public static ArrayList<String> GetPlayers(String teamName){
+        ArrayList<String> players = new ArrayList<>();
+        return players;
+    }
+
 }
