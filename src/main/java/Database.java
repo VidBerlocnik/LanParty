@@ -125,6 +125,23 @@ public class Database {
 
     public static ArrayList<String> GetPlayers(String teamName){
         ArrayList<String> players = new ArrayList<>();
+
+        String cmd = "SELECT username FROM users INNER JOIN teams t on users.team_id = t.id WHERE (t.name = '" + teamName + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                players.add(set.getString("username"));
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
         return players;
     }
 
