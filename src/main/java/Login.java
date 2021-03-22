@@ -39,6 +39,12 @@ public class Login {
             }
             else{
                 new TeamsDisplay();
+                if(hasTeam(user)){
+                    System.out.println("User has a team!");
+                }
+                else{
+                    System.out.println("User doesn't have a team!");
+                }
                 jframe.setVisible(false);
             }
         });
@@ -47,5 +53,15 @@ public class Login {
             new Registration();
             jframe.setVisible(false);
         });
+    }
+
+    private boolean hasTeam(User user){
+        if(user.TeamId == 0){
+            return false;
+        }
+        else if(user.TeamId > 0){
+            return true;
+        }
+        return false;
     }
 }
