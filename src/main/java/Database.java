@@ -86,7 +86,7 @@ public class Database {
     }
 
     public static User VerifyLogin(String username, String password){
-        String cmd = "SELECT * FROM users WHERE(username = '" + username + "') AND (password = '" + password + "');";
+        String cmd = "SELECT * FROM users WHERE((username = '" + username + "') AND (password = '" + password + "'));";
         User returnedUser = new User();
 
         try (Connection con = connect();

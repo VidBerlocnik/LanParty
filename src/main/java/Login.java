@@ -38,11 +38,12 @@ public class Login {
                 Messages.infoBox("Username and password does not match. If you don't have and account yet please register.", "Login failed");
             }
             else{
-                new TeamsDisplay();
                 if(hasTeam(user)){
+                    new TeamsDisplay();
                     System.out.println("User has a team!");
                 }
                 else{
+                    new SelectTeam();
                     System.out.println("User doesn't have a team!");
                 }
                 jframe.setVisible(false);
