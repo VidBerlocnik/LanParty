@@ -165,4 +165,17 @@ public class Database {
 
         return players;
     }
+
+    public static void JoinTeam(int teamId, User user){
+        String cmd = "UPDATE users SET team_id = " + teamId + " WHERE(id = " + user.Id + ");";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement()) {
+            ResultSet set = st.executeQuery(cmd);
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
 }
