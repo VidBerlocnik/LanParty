@@ -41,6 +41,27 @@ public class Database {
         return vrni;
     }
 
+    public static int GetTeamId(String teamName){
+        int teamId = 0;
+        String cmd = "SELECT id FROM teams WHERE(name = '" + teamName + "');";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                teamId = set.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return teamId;
+    }
+
 
     public static ArrayList<String> GetTeams(String gameName) {
         String cmd = "SELECT * FROM teams t INNER JOIN games g ON t.game_id = g.id " +

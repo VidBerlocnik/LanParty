@@ -43,7 +43,7 @@ public class Login {
                     System.out.println("User has a team!");
                 }
                 else{
-                    new SelectTeam();
+                    new SelectTeam(user);
                     System.out.println("User doesn't have a team!");
                 }
                 jframe.setVisible(false);
