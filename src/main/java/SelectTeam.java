@@ -10,6 +10,12 @@ public class SelectTeam {
     private User user;
 
     public SelectTeam(User uuser){
+        JFrame jframe = new JFrame("Select team");
+        jframe.setContentPane(panel);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.pack();
+        jframe.setSize(600,400); // change these
+        jframe.setVisible(true);
         fillComboBox();
         setActionListeners();
         user = uuser;
@@ -20,8 +26,9 @@ public class SelectTeam {
         gameComboBox.addActionListener(e -> showTeams());
 
         joinTeamButton.addActionListener(e -> {
-            int teamId = Database.GetTeamId(teamsList.getName());
-            //Database.JoinTeam(teamId, user);
+            int teamId = Database.GetTeamId(teamsList.getSelectedValue().toString());
+            Database.JoinTeam(teamId, user);
+            new TeamsDisplay();
          });
     }
 
