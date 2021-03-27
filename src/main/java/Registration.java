@@ -57,9 +57,9 @@ public class Registration {
                 new Login();
                 jframe.setVisible(false);
             }
-            /*else{
-                Display message box "date format error" - Messages class
-            }*/
+            else{
+                Messages.infoBox("Date is written in wrong format. Please check format and try again.", "Wrong date format");
+            }
         });
     }
 
