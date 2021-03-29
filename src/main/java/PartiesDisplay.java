@@ -14,7 +14,28 @@ public class PartiesDisplay {
         jframe.pack();
         jframe.setSize(600,400); // change these
         jframe.setVisible(true);
+        fillComboBox();
+        setActionListeners();
+    }
+    private void setActionListeners(){
+        gameComboBox.addActionListener(e -> showParties());
     }
 
+    private void fillComboBox(){
+        ArrayList<String> games =  Database.GetGames();
 
+        DefaultComboBoxModel<String> demoList = new DefaultComboBoxModel<>();
+
+        for (String game: games
+        ) {
+            demoList.addElement(game);
+        }
+        gameComboBox.setModel(demoList);
+
+        System.out.println("games demoList: " + demoList);
+    }
+
+    private void showParties(){
+
+    }
 }

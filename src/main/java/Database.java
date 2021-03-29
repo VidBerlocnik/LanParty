@@ -177,4 +177,10 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public static ArrayList<String> GetParties(){
+        ArrayList<String> parties = new ArrayList<>();
+
+        return parties;
+    }
 }
