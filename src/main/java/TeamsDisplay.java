@@ -9,6 +9,7 @@ public class TeamsDisplay {
     private JList playersList;
     private JLabel label2;
     private JLabel label3;
+    private JButton partiesButton;
 
     public TeamsDisplay(){
         JFrame jframe = new JFrame("Display teams");
@@ -26,6 +27,8 @@ public class TeamsDisplay {
         gameComboBox.addActionListener(e -> showTeams());
 
         teamsList.addListSelectionListener(e -> showPlayers());
+
+        partiesButton.addActionListener(e -> new PartiesDisplay());
     }
 
     private void fillComboBox(){
