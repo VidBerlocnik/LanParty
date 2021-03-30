@@ -39,7 +39,7 @@ public class Login {
             }
             else{
                 if(hasTeam(user)){
-                    new TeamsDisplay();
+                    new TeamsDisplay(user);
                     System.out.println("User has a team!");
                 }
                 else{

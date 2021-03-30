@@ -19,6 +19,7 @@ public class SelectTeam {
         fillComboBox();
         setActionListeners();
         user = uuser;
+        showTeams();
     }
 
 
@@ -28,7 +29,7 @@ public class SelectTeam {
         joinTeamButton.addActionListener(e -> {
             int teamId = Database.GetTeamId(teamsList.getSelectedValue().toString());
             Database.JoinTeam(teamId, user);
-            new TeamsDisplay();
+            new TeamsDisplay(user);
          });
     }
 

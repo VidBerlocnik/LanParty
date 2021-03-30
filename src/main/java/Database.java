@@ -177,4 +177,72 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public static ArrayList<Party> GetParties(){
+        String cmd = "SELECT * FROM parties;";
+        ArrayList<Party> parties = new ArrayList<>();
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                Integer id = set.getInt("id");
+                String name = set.getString("name");
+                String date = set.getString("date");
+                Party party = new Party(id, name, date);
+                parties.add(party);
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return parties;
+    }
+
+    public static void JoinParty(Integer teamId, Integer partyId){
+        String cmd = "INSERT INTO party_team (party_id, team_id) VALUES (" + partyId + ", " + teamId + ");";
+        ArrayList<Party> parties = new ArrayList<>();
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                Integer id = set.getInt("id");
+                String name = set.getString("name");
+                String date = set.getString("date");
+                Party party = new Party(id, name, date);
+                parties.add(party);
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static Integer GetPartyId(String partyName, String partyDate){
+        String cmd = "SELECT id FROM parties WHERE (name = '" + partyName + "') AND (date = '" + partyDate + "');";
+        Integer id = 0;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                id = set.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
 }

@@ -9,9 +9,11 @@ public class TeamsDisplay {
     private JList playersList;
     private JLabel label2;
     private JLabel label3;
+    private JButton partiesButton;
+    JFrame jframe = new JFrame("Display teams");
+    User loggedUser;
 
-    public TeamsDisplay(){
-        JFrame jframe = new JFrame("Display teams");
+    public TeamsDisplay(User Loggeduser){
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -20,12 +22,18 @@ public class TeamsDisplay {
         setActionListeners();
         fillComboBox();
         showTeams();
+        loggedUser = Loggeduser;
     }
 
     private void setActionListeners() {
         gameComboBox.addActionListener(e -> showTeams());
 
         teamsList.addListSelectionListener(e -> showPlayers());
+
+        partiesButton.addActionListener(e -> {
+            new PartiesDisplay(loggedUser);
+            jframe.setVisible(false);
+        });
     }
 
     private void fillComboBox(){
