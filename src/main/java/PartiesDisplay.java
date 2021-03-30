@@ -24,7 +24,10 @@ public class PartiesDisplay {
 
         teamJoinPartyButton.addActionListener(e -> teamJoinParty());
 
-        teamsButton.addActionListener(e -> new TeamsDisplay());
+        teamsButton.addActionListener(e -> {
+            new TeamsDisplay();
+            jframe.setVisible(false);
+        });
     }
 
     private void fillComboBox(){

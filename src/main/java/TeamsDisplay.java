@@ -10,9 +10,9 @@ public class TeamsDisplay {
     private JLabel label2;
     private JLabel label3;
     private JButton partiesButton;
+    JFrame jframe = new JFrame("Display teams");
 
     public TeamsDisplay(){
-        JFrame jframe = new JFrame("Display teams");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -28,7 +28,10 @@ public class TeamsDisplay {
 
         teamsList.addListSelectionListener(e -> showPlayers());
 
-        partiesButton.addActionListener(e -> new PartiesDisplay());
+        partiesButton.addActionListener(e -> {
+            new PartiesDisplay();
+            jframe.setVisible(false);
+        });
     }
 
     private void fillComboBox(){
