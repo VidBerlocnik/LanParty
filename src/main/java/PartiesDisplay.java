@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 public class PartiesDisplay {
@@ -61,6 +62,16 @@ public class PartiesDisplay {
     }
 
     private void teamJoinParty(){
+        Integer teamId = LoggedUser.TeamId;
+        Integer partyId;
+        String party = partiesList.getSelectedValue().toString();
 
+        String[] partyy = party.split("|");
+        String partyName = partyy[0].trim();
+        String partyDate = partyy[1].trim();
+
+        partyId = Database.GetPartyId(partyName, partyDate);
+
+        Database.JoinParty(teamId, partyId);
     }
 }
