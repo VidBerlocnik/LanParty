@@ -9,8 +9,9 @@ public class PartiesDisplay {
     private JButton teamJoinPartyButton;
     private JButton teamsButton;
     private JFrame jframe = new JFrame("LAN Parties list");
+    User LoggedUser;
 
-    public PartiesDisplay(){
+    public PartiesDisplay(User loggedUser){
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -19,6 +20,7 @@ public class PartiesDisplay {
         fillComboBox();
         setActionListeners();
         showParties();
+        LoggedUser = loggedUser;
     }
     private void setActionListeners(){
         gameComboBox.addActionListener(e -> showParties());
@@ -26,7 +28,7 @@ public class PartiesDisplay {
         teamJoinPartyButton.addActionListener(e -> teamJoinParty());
 
         teamsButton.addActionListener(e -> {
-            new TeamsDisplay();
+            new TeamsDisplay(LoggedUser);
             jframe.setVisible(false);
         });
     }

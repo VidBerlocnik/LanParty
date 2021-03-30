@@ -11,8 +11,9 @@ public class TeamsDisplay {
     private JLabel label3;
     private JButton partiesButton;
     JFrame jframe = new JFrame("Display teams");
+    User loggedUser;
 
-    public TeamsDisplay(){
+    public TeamsDisplay(User Loggeduser){
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
@@ -21,6 +22,7 @@ public class TeamsDisplay {
         setActionListeners();
         fillComboBox();
         showTeams();
+        loggedUser = Loggeduser;
     }
 
     private void setActionListeners() {
@@ -29,7 +31,7 @@ public class TeamsDisplay {
         teamsList.addListSelectionListener(e -> showPlayers());
 
         partiesButton.addActionListener(e -> {
-            new PartiesDisplay();
+            new PartiesDisplay(loggedUser);
             jframe.setVisible(false);
         });
     }
