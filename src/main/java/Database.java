@@ -178,8 +178,27 @@ public class Database {
         }
     }
 
-    public static ArrayList<String> GetParties(){
-        ArrayList<String> parties = new ArrayList<>();
+    public static ArrayList<Party> GetParties(){
+        String cmd = "SELECT * FROM parties;";
+        ArrayList<Party> parties = new ArrayList<>();
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                Integer id = set.getInt("id");
+                String name = set.getString("name");
+                String date = set.getString("date");
+                Party party = new Party(id, name, date);
+                parties.add(party);
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
 
         return parties;
     }

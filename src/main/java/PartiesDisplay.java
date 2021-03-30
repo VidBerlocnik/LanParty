@@ -39,7 +39,16 @@ public class PartiesDisplay {
     }
 
     private void showParties(){
+        ArrayList<Party> parties = Database.GetParties();
 
+        DefaultListModel<Party> demoList = new DefaultListModel<>();
+
+        for (Party party: parties
+        ) {
+            demoList.addElement(party);
+        }
+
+        partiesList.setModel(demoList);
     }
 
     private void teamJoinParty(){
