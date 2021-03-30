@@ -18,6 +18,7 @@ public class PartiesDisplay {
         jframe.setVisible(true);
         fillComboBox();
         setActionListeners();
+        showParties();
     }
     private void setActionListeners(){
         gameComboBox.addActionListener(e -> showParties());

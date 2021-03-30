@@ -19,6 +19,7 @@ public class SelectTeam {
         fillComboBox();
         setActionListeners();
         user = uuser;
+        showTeams();
     }
 
 
