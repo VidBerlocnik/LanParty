@@ -7,7 +7,6 @@ public class SelectTeam {
     private JComboBox gameComboBox;
     private JLabel label1;
     private JButton joinTeamButton;
-    private JButton createTeamButton;
     private User user;
 
     public SelectTeam(User uuser){
@@ -30,10 +29,6 @@ public class SelectTeam {
             int teamId = Database.GetTeamId(teamsList.getSelectedValue().toString());
             Database.JoinTeam(teamId, user);
             new TeamsDisplay();
-
-            createTeamButton.addActionListener(c -> {
-                new CreateTeam();
-            });
          });
     }
 
@@ -67,6 +62,5 @@ public class SelectTeam {
 
         //System.out.println("teams demoList: " + demoList);
     }
-
 
 }
