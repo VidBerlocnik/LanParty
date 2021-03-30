@@ -13,4 +13,9 @@ public class Party {
         Name = null;
         Date = null;
     }
+
+    @Override
+    public String toString() {
+        return String.format(Name + "  |  " + Date);
+    }
 }
