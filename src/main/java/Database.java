@@ -228,7 +228,7 @@ public class Database {
 
     public static Integer GetPartyId(String partyName, String partyDate){
         String cmd = "SELECT id FROM parties WHERE (name = '" + partyName + "') AND (date = '" + partyDate + "');";
-        Integer id = null;
+        Integer id = 0;
 
         try (Connection con = connect();
              Statement st = con.createStatement();

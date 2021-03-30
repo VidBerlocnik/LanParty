@@ -66,7 +66,7 @@ public class PartiesDisplay {
         Integer partyId;
         String party = partiesList.getSelectedValue().toString();
 
-        String[] partyy = party.split("|");
+        String[] partyy = party.split("_");
         String partyName = partyy[0].trim();
         String partyDate = partyy[1].trim();
 
