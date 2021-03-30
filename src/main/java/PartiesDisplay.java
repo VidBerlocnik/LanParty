@@ -6,6 +6,7 @@ public class PartiesDisplay {
     private JList partiesList;
     private JComboBox gameComboBox;
     private JLabel label1;
+    private JButton teamJoinPartyButton;
     private JFrame jframe = new JFrame("LAN Parties list");
 
     public PartiesDisplay(){
@@ -19,6 +20,8 @@ public class PartiesDisplay {
     }
     private void setActionListeners(){
         gameComboBox.addActionListener(e -> showParties());
+
+        teamJoinPartyButton.addActionListener(e -> teamJoinParty());
     }
 
     private void fillComboBox(){
@@ -36,6 +39,10 @@ public class PartiesDisplay {
     }
 
     private void showParties(){
+
+    }
+
+    private void teamJoinParty(){
 
     }
 }
