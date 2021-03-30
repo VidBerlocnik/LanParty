@@ -225,4 +225,24 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    public static Integer GetPartyId(String partyName, String partyDate){
+        String cmd = "SELECT id FROM parties WHERE (name = '" + partyName + "') AND (date = '" + partyDate + "');";
+        Integer id = null;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            // loop through the records
+            while (set.next()) {
+                id = set.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
 }
