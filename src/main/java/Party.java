@@ -16,6 +16,6 @@ public class Party {
 
     @Override
     public String toString() {
-        return String.format(Name + "  |  " + Date);
+        return String.format(Name + "  _  " + Date);
     }
 }
