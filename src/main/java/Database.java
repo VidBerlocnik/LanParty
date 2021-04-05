@@ -245,4 +245,18 @@ public class Database {
         }
         return id;
     }
+
+    public static void CreateTeam(String teamName, Integer gameId, String logoPath){
+        String cmd = "INSERT INTO teams (name, game_id, logo)" +
+                "VALUES ('" + teamName + "', " + gameId + ", '" + logoPath + "')";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
 }
