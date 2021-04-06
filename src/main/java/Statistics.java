@@ -8,5 +8,20 @@ public class Statistics {
     private JLabel numberOfTeamsLabel;
     private JLabel label3;
     private JLabel averageTeamsLabel;
-    private JButton BackButton;
+    private JButton backButton;
+    private JFrame jframe = new JFrame("LAN Party Statistics");
+    User loggedUser;
+
+    public Statistics(User loggedUserr){
+        jframe.setContentPane(panel);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.pack();
+        jframe.setSize(600,400); // change these
+        jframe.setVisible(true);
+        loggedUser = loggedUserr;
+    }
+
+    private void setActionListeners(){
+        backButton.addActionListener(e -> new TeamsDisplay(loggedUser));
+    }
 }
