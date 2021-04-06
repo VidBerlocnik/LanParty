@@ -18,6 +18,7 @@ public class CreateTeam {
     private JComboBox gameComboBox;
     private JLabel label3;
     private JFrame jframe = new JFrame("LAN Create team");
+    private User user;
 
     public CreateTeam(){
         jframe.setContentPane(panel);
@@ -29,6 +30,17 @@ public class CreateTeam {
         setActionListeners();
     }
 
+    public CreateTeam(User userr){
+        jframe.setContentPane(panel);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.pack();
+        jframe.setSize(600,400); // change these
+        jframe.setVisible(true);
+        fillComboBox();
+        setActionListeners();
+        user = userr;
+    }
+
     private void setActionListeners(){
         createTeamButton.addActionListener(e -> {
             if(!teamNameTextField.getText().isEmpty()){
@@ -37,6 +49,8 @@ public class CreateTeam {
                     String logoPath = "Dodaj kodo";
                     Integer gameId = Database.GetGameID(gameComboBox.getSelectedItem().toString());
                     Database.CreateTeam(teamName, gameId, logoPath);
+                    //Add user to team (Database function)
+                    //get logo path and save image
                 }
             }
         });
