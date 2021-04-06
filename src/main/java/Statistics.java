@@ -19,6 +19,7 @@ public class Statistics {
         jframe.setSize(600,400); // change these
         jframe.setVisible(true);
         loggedUser = loggedUserr;
+        setActionListeners();
     }
 
     private void setActionListeners(){
