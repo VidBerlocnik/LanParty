@@ -13,6 +13,17 @@ public class TeamsDisplay {
     JFrame jframe = new JFrame("Display teams");
     User loggedUser;
 
+    public TeamsDisplay(){
+        jframe.setContentPane(panel);
+        jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jframe.pack();
+        jframe.setSize(600,400); // change these
+        jframe.setVisible(true);
+        setActionListeners();
+        fillComboBox();
+        showTeams();
+    }
+
     public TeamsDisplay(User Loggeduser){
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
