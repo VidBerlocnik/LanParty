@@ -245,4 +245,16 @@ public class Database {
         }
         return id;
     }
+
+    public static Integer GetPartiesNumber(){
+        return 0;
+    }
+
+    public static Integer GetAverageTeamsPerParty(){
+        return 0;
+    }
+
+    public static Integer GetTeamsParticipation(){
+        return 0;
+    }
 }
