@@ -247,7 +247,7 @@ public class Database {
     }
 
     public static Integer GetPartiesNumber(){
-        String cmd = "SELECT * FROM getPartiesNumber();";
+        String cmd = "SELECT parties FROM statistics;";
         Integer x = 0;
 
         try (Connection con = connect();
@@ -255,7 +255,7 @@ public class Database {
              ResultSet set = st.executeQuery(cmd)) {
 
             while (set.next()) {
-                x = set.getInt("id");
+                x = set.getInt("parties");
             }
         }
         catch (SQLException e) {
