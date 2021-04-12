@@ -267,7 +267,21 @@ public class Database {
     }
 
     public static Integer GetTeamsParticipation(){
+        String cmd = "SELECT teamsparticipating FROM statistics;";
+        Integer y = 0;
 
-        return 0;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next()) {
+                y = set.getInt("teamsparticipating");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return y;
     }
 }
