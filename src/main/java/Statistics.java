@@ -18,12 +18,18 @@ public class Statistics {
         jframe.setVisible(true);
         loggedUser = loggedUserr;
         setActionListeners();
-
-
-
+        getPartiesStats();
     }
 
     private void setActionListeners(){
         backButton.addActionListener(e -> new TeamsDisplay(loggedUser));
+    }
+
+    private void getPartiesStats(){
+        Integer x = Database.GetPartiesNumber();
+        numberOfPartiesLabel.setText(x.toString());
+
+        Integer y = Database.GetTeamsParticipation();
+        numberOfTeamsLabel.setText(y.toString());
     }
 }
