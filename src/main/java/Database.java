@@ -247,14 +247,27 @@ public class Database {
     }
 
     public static Integer GetPartiesNumber(){
-        return 0;
-    }
+        String cmd = "SELECT * FROM getPartiesNumber();";
+        Integer x = 0;
 
-    public static Integer GetAverageTeamsPerParty(){
-        return 0;
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next()) {
+                x = set.getInt("id");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return x;
     }
 
     public static Integer GetTeamsParticipation(){
+
         return 0;
     }
 }
