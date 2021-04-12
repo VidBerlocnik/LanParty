@@ -6,8 +6,6 @@ public class Statistics {
     private JLabel label2;
     private JLabel numberOfPartiesLabel;
     private JLabel numberOfTeamsLabel;
-    private JLabel label3;
-    private JLabel averageTeamsLabel;
     private JButton backButton;
     private JFrame jframe = new JFrame("LAN Party Statistics");
     User loggedUser;
@@ -20,6 +18,9 @@ public class Statistics {
         jframe.setVisible(true);
         loggedUser = loggedUserr;
         setActionListeners();
+
+
+
     }
 
     private void setActionListeners(){
