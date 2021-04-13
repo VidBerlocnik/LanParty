@@ -246,7 +246,21 @@ public class Database {
         return id;
     }
 
-    public static Integer GetPartiesNumber(){
+    public static void CreateTeam(String teamName, Integer gameId, String logoPath){
+        String cmd = "INSERT INTO teams (name, game_id, logo)" +
+                "VALUES ('" + teamName + "', " + gameId + ", '" + logoPath + "')";
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+    }
+ 
+  public static Integer GetPartiesNumber(){
         String cmd = "SELECT parties FROM statistics;";
         Integer x = 0;
 
@@ -265,8 +279,8 @@ public class Database {
 
         return x;
     }
-
-    public static Integer GetTeamsParticipation(){
+  
+  public static Integer GetTeamsParticipation(){
         String cmd = "SELECT teamsparticipating FROM statistics;";
         Integer y = 0;
 

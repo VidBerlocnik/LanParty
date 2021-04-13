@@ -7,6 +7,7 @@ public class SelectTeam {
     private JComboBox gameComboBox;
     private JLabel label1;
     private JButton joinTeamButton;
+    private JButton createTeamButton;
     private User user;
     private JFrame jframe = new JFrame("Select team");
 
@@ -31,6 +32,9 @@ public class SelectTeam {
             Database.JoinTeam(teamId, user);
             new TeamsDisplay(user);
          });
+        createTeamButton.addActionListener(e -> {
+            new CreateTeam(user);
+        });
     }
 
     private void fillComboBox(){
