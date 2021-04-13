@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.imageio.ImageIO;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.crypto.Data;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +50,8 @@ public class CreateTeam {
                     String logoPath = "Dodaj kodo";
                     Integer gameId = Database.GetGameID(gameComboBox.getSelectedItem().toString());
                     Database.CreateTeam(teamName, gameId, logoPath);
-                    //Add user to team (Database function)
+                    Integer teamId = Database.GetTeamId(teamName);
+                    Database.JoinTeam(teamId, user);
                     //get logo path and save image
                 }
             }
