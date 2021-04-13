@@ -60,12 +60,13 @@ public class CreateTeam {
             if(!teamNameTextField.getText().isEmpty()){
                 if(imagePathLabel.getText() != "Image not selected"){
                     String teamName = teamNameTextField.getText();
-                    String logoPath = "Dodaj kodo";
+                    String image = "src\\main\\img\\" + fileName;
                     Integer gameId = Database.GetGameID(gameComboBox.getSelectedItem().toString());
-                    Database.CreateTeam(teamName, gameId, logoPath);
+                    Database.CreateTeam(teamName, gameId, image);
                     Integer teamId = Database.GetTeamId(teamName);
                     Database.JoinTeam(teamId, user);
-                    //get logo path and save image
+                    jframe.setVisible(false);
+                    new PartiesDisplay(user);
                 }
             }
         });
@@ -88,6 +89,7 @@ public class CreateTeam {
                     ImageIO.write(image, "png",new File("src\\img\\" + file.getName()));
                     fileName = file.getName();
                     fileIfDelete = true;
+                    imagePathLabel.setText(fileName);
                 } catch (IOException ex) {
                     Logger.getLogger(CreateTeam.class.getName()).log(Level.SEVERE, null, ex);
 
