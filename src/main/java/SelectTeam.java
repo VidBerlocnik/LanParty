@@ -8,9 +8,9 @@ public class SelectTeam {
     private JLabel label1;
     private JButton joinTeamButton;
     private User user;
+    private JFrame jframe = new JFrame("Select team");
 
     public SelectTeam(User uuser){
-        JFrame jframe = new JFrame("Select team");
         jframe.setContentPane(panel);
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.pack();
