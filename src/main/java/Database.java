@@ -259,4 +259,43 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+ 
+  public static Integer GetPartiesNumber(){
+        String cmd = "SELECT parties FROM statistics;";
+        Integer x = 0;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next()) {
+                x = set.getInt("parties");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
+        return x;
+    }
+  
+  public static Integer GetTeamsParticipation(){
+        String cmd = "SELECT teamsparticipating FROM statistics;";
+        Integer y = 0;
+
+        try (Connection con = connect();
+             Statement st = con.createStatement();
+             ResultSet set = st.executeQuery(cmd)) {
+
+            while (set.next()) {
+                y = set.getInt("teamsparticipating");
+            }
+        }
+        catch (SQLException e) {
+            //Messages.databaseReadingError(database, e.getMessage());
+            System.out.println(e.getMessage());
+        }
+        return y;
+    }
 }

@@ -1,0 +1,11 @@
+FUNCTIONS:
+increaseTeamsParticipatingNumber
+decreaseTeamsParticipatingNumber
+increasePartiesNumber
+decreasePartiesNumber
+
+TRIGGERS:
+increasePartiesTrigger
+decreasePartiesTrigger
+increaseTeamsParticipatingTrigger
+decreaseTeamsParticipatingTrigger

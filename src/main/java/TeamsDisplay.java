@@ -10,6 +10,7 @@ public class TeamsDisplay {
     private JLabel label2;
     private JLabel label3;
     private JButton partiesButton;
+    private JButton statsButton;
     JFrame jframe = new JFrame("Display teams");
     User loggedUser;
 
@@ -34,6 +35,8 @@ public class TeamsDisplay {
             new PartiesDisplay(loggedUser);
             jframe.setVisible(false);
         });
+
+        statsButton.addActionListener(e -> new Statistics(loggedUser));
     }
 
     private void fillComboBox(){
