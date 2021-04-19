@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.xml.crypto.Data;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class Login {
@@ -32,6 +34,7 @@ public class Login {
                  ) {
                 pass = pass + letter;
             }
+            pass = doHashing(pass);
 
             User user = Database.VerifyLogin(usernameTextField.getText(), pass);
             if(user.Username == null){
@@ -54,6 +57,28 @@ public class Login {
             new Registration();
             jframe.setVisible(false);
         });
+    }
+
+    public static String doHashing (String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+
+            messageDigest.update(password.getBytes());
+
+            byte[] resultByteArray = messageDigest.digest();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 
     private boolean hasTeam(User user){

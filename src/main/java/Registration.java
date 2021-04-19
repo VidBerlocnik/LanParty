@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 
 public class Registration {
@@ -38,6 +40,10 @@ public class Registration {
                 pass = pass + letter;
             }
 
+            //password encription
+            pass = doHashing(pass);
+
+
             String dateofbirth = dateOfBirthTextField.getText(); //If user inserts in wrong format it crashes
 
             String email = emailTextField.getText();
@@ -55,5 +61,27 @@ public class Registration {
             new Login();
             jframe.setVisible(false);
         });
+    }
+
+    public static String doHashing (String password) {
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+
+            messageDigest.update(password.getBytes());
+
+            byte[] resultByteArray = messageDigest.digest();
+
+            StringBuilder sb = new StringBuilder();
+
+            for (byte b : resultByteArray) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }
