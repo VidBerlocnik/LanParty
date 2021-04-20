@@ -42,7 +42,12 @@ public class ImageDisplay {
             }
 
             ImageIcon slika = new ImageIcon("src\\img\\" + image);
-            lPhoto.setIcon(slika);
+
+            Image imagee = slika.getImage();
+            Image newimg = imagee.getScaledInstance(600, 600,  java.awt.Image.SCALE_SMOOTH);
+            ImageIcon img = new ImageIcon(newimg);
+
+            lPhoto.setIcon(img);
         }
         catch (SQLException e) {
             System.out.println(e.getMessage());
