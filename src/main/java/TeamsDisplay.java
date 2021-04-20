@@ -47,7 +47,7 @@ public class TeamsDisplay {
             jframe.setVisible(false);
         });
 
-        statsButton.addActionListener(e -> new Statistics(loggedUser));
+        statsButton.addActionListener(e -> new Chart());
     }
 
     private void fillComboBox(){
