@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class SelectTeam {
@@ -34,6 +36,16 @@ public class SelectTeam {
          });
         createTeamButton.addActionListener(e -> {
             new CreateTeam(user);
+        });
+
+        teamsList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                JList list = (JList)evt.getSource();
+                if (evt.getClickCount() == 2) {
+                    new ImageDisplay(teamsList.getSelectedValue().toString());
+                    int index = list.locationToIndex(evt.getPoint());
+                }
+            }
         });
     }
 

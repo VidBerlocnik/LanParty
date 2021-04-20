@@ -60,9 +60,8 @@ public class CreateTeam {
             if(!teamNameTextField.getText().isEmpty()){
                 if(imagePathLabel.getText() != "Image not selected"){
                     String teamName = teamNameTextField.getText();
-                    String image = "src\\main\\img\\" + fileName;
                     Integer gameId = Database.GetGameID(gameComboBox.getSelectedItem().toString());
-                    Database.CreateTeam(teamName, gameId, image);
+                    Database.CreateTeam(teamName, gameId, fileName);
                     Integer teamId = Database.GetTeamId(teamName);
                     Database.JoinTeam(teamId, user);
                     jframe.setVisible(false);
