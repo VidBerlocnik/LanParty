@@ -13,9 +13,9 @@ public class Chart {
 
     public Chart(){
         XYDataset ds = createDataset();
-        JFreeChart chart = ChartFactory.createXYLineChart("Test Chart","x", "y", ds, PlotOrientation.VERTICAL, true, true,false);
+        JFreeChart chart = ChartFactory.createXYLineChart("Parties number Chart","Parties", "Number", ds, PlotOrientation.VERTICAL, false, false,false);
 
-        ChartFrame frame = new ChartFrame("Results", chart);
+        ChartFrame frame = new ChartFrame("Parties number Chart", chart);
         frame.pack();
         frame.setVisible(true);
     }
@@ -25,9 +25,12 @@ public class Chart {
 
         DefaultXYDataset ds = new DefaultXYDataset();
 
-        double[][] data = { {0.1, 0.2, 0.3}, {1, 2, 3} };
+        Integer parties = Database.GetPartiesNumber();
+        System.out.println("Parties:" + parties);
 
-        ds.addSeries("series1", data);
+        double[][] data = { {1, 2}, {parties, parties} };
+
+        ds.addSeries("All parties", data);
 
         return ds;
     }
