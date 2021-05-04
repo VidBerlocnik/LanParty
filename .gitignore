@@ -3,3 +3,4 @@ local/
 target/
 *.iml
 *.png
+java/Database.java
